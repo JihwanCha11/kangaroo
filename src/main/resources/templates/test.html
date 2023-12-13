@@ -1,0 +1,21 @@
+<html>
+<head>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script>
+$.ajax({
+    type: "GET",
+    contentType: "application/json",
+    url: "/estimation/rest",
+    data: { component : "cpu",
+    		page : 0,
+    		kw : "1"},
+    success: function(response) {
+        console.log(response);
+    }
+});
+</script>
+</head>
+<body>
+	12345		
+</body>
+</html>
