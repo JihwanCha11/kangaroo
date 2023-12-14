@@ -78,7 +78,7 @@ public class BoardCotroller {
 		boardForm.setContent(board.getContent());
 		return "board/board_form";
 	}
-	//문의 수정
+	//문의 수정 
 	@PreAuthorize("isAuthenticated()")// 로그인필요함
     @PostMapping("/modify/{id}")
     public String boardModify(@Valid BoardForm boardForm, BindingResult bindingResult, 
