@@ -25,17 +25,15 @@
               <li><a href="gallery.html">Animals</a></li>
               <li><a href="gallery.html">Sports</a></li>
               <li><a href="gallery.html">Travel</a></li>
-              <li class="dropdown"><a href="#"><span>Sub Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Sub Menu 1</a></li>
-                  <li><a href="#">Sub Menu 2</a></li>
-                  <li><a href="#">Sub Menu 3</a></li>
-                </ul>
-              </li>
             </ul>
           </li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li class="dropdown"><a href="#"><span>문 의</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a th:href="@{/board/list}">문의 게시판</a></li>
+                  <li><a href="#">상담예약</a></li>
+                </ul>
+              </li>
           <li class="nav-item"><a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/user/login}">로그인</a></li>
           <li class="nav-item"><a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/user/logout}">로그아웃</a></li>
           <li class="nav-item"><a class="nav-link" th:href="@{/user/signup}">회원가입</a>

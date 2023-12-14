@@ -11,8 +11,8 @@ public class BoardForm {
 	
 	 	@NotEmpty(message="제목은 필수항목입니다.")
 	    @Size(max=200)
-	    private String subject;
+	    private String subject; //공백 방지
 
 	    @NotEmpty(message="내용은 필수항목입니다.")
-	    private String content;
+	    private String content;//공백 방지
 }
