@@ -10,9 +10,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.example.scarecrow.dto.Gpu;
-import com.example.scarecrow.dto.Gpu;
-import com.example.scarecrow.repository.GpuRepository;
+import com.example.scarecrow.dto.Ram;
+import com.example.scarecrow.repository.RamRepository;
+import com.example.scarecrow.repository.RamRepository;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -22,31 +22,31 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class GpuService {
+public class RamService{
+
+	private final RamRepository ramRepository;
 	
-	private final GpuRepository gpuRepository;
-	
-	private Specification<Gpu> search(String kw) {
-		return new Specification<Gpu>() {
+	private Specification<Ram> search(String kw) {
+		return new Specification<Ram>() {
 			private static final long serialVersionUID = 1L;
 			@Override
-			public Predicate toPredicate(Root<Gpu> q, CriteriaQuery<?> query, CriteriaBuilder cb) {
+			public Predicate toPredicate(Root<Ram> q, CriteriaQuery<?> query, CriteriaBuilder cb) {
 				query.distinct(true);
 				return cb.like(q.get("modelName"), "%" + kw + "%");
 			}
 		};
 	}
 	
-	public List<Gpu> getList() {
-		return this.gpuRepository.findAll();
+	public List<Ram> getList() {
+		return this.ramRepository.findAll();
 	}
 	
-	public Page<Gpu> getList(int page, String kw) {
+	public Page<Ram> getList(int page, String kw) {
 		List<Sort.Order> sorts = new ArrayList<>();
 		sorts.add(Sort.Order.desc("id"));
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-		Specification<Gpu> spec = search(kw);
-		return this.gpuRepository.findAll(spec, pageable);
+		Specification<Ram> spec = search(kw);
+		return this.ramRepository.findAll(spec, pageable);
 	}
-
+	
 }

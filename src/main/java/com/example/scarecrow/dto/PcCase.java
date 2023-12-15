@@ -10,11 +10,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Case {
+public class PcCase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    private String modelName;
 
     // 케이스 속성
     private String type;  // PC 케이스 유형 (예: "미들타워", "풀타워" 등)

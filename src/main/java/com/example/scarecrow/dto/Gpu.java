@@ -21,6 +21,9 @@ public class Gpu implements Serializable {
 
     @Column(nullable = true)
     private String modelName; // GPU 모델명 (예: "GeForce RTX 4060 Ti 벤투스 2X 블랙 OC D6 8GB")
+    
+    @Column(nullable = true)
+    private String manufacturer; // 제조사 (예: "AMD")
 
     @Column(nullable = true)
     private String series; // GPU 시리즈 (예: "RTX 4060 Ti")

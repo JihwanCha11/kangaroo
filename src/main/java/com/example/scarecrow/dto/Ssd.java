@@ -17,9 +17,9 @@ public class Ssd {
     private Long id;
 
     // SSD 속성
+    private String modelName;  // 모델명 (예: "MTE220S M.2 NVMe 2280 [512GB TLC]")
     private String brand;  // 브랜드 (예: "Transcend")
-    private String model;  // 모델명 (예: "MTE220S M.2 NVMe 2280 [512GB TLC]")
-    private String usage;  // 사용 용도 (예: "PC/노트북용")
+    private String usageDescription;  // 사용 용도 (예: "PC/노트북용")
     private String formFactor;  // SSD 포맷 (예: "M.2(NVMe)")
     private String interfaceType;  // 인터페이스 타입 (예: "PCIeGen3")
     private String capacity;  // 저장 용량 (예: "512GB")

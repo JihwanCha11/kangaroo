@@ -13,8 +13,8 @@ public class Hdd {
     private Long id;
 
     // HDD 속성
+    private String modelName;  // 모델명 (예: "BARRACUDA HDD 4TB ST4000DM004")
     private String brand;  // 브랜드 (예: "SEAGATE")
-    private String model;  // 모델명 (예: "BARRACUDA HDD 4TB ST4000DM004")
     private String type;  // HDD 유형 (PC용)
     private String formFactor;  // HDD 포맷 (8.9cm(3.5인치))
     private String capacity;  // 저장 용량 (4TB)

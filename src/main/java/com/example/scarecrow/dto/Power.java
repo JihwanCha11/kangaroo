@@ -15,6 +15,8 @@ public class Power {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    private String modelName;
 
     // 파워 속성
     private String type;  // ATX 파워인지 등 파워의 유형을 나타냄 (예: "ATX", "MicroATX" 등)

@@ -15,6 +15,9 @@ public class Ram {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    // 모델 이름
+    private String modelName;
 
     // RAM 용량 (GB)
     private Integer sizeInGB;
@@ -29,7 +32,7 @@ public class Ram {
     private Boolean heatSpreader;
 
     // RAM 사용 용도 (PC, 노트북 등)
-    private String usage;
+    private String usageDescription;
 
     // 메모리 타이밍 값들
     private Integer timingCAS; // CAS 지연 시간

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- JQuery CDN -->
+	<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+	
+	<!-- Favicons -->
+	<link th:href="@{/img/favicon.png}" rel="icon">
+	<link th:href="@{/img/apple-touch-icon.png}" rel="apple-touch-icon">
+	 
+	 
+	<!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+	<!-- Vendor CSS Files -->
+	<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+	<link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+	<link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+	<link th:href="@{/vendor/aos/aos.css}" rel="stylesheet">
+	
+	<!-- Template Main CSS File--> 
+	<link th:href="@{/css/main.css}" rel="stylesheet">
+	<!-- Vendor JS Files -->
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/vendor/swiper/swiper-bundle.min.js}"></script>
+	<script th:src="@{/vendor/glightbox/js/glightbox.min.js}"></script>
+	<script th:src="@{/vendor/aos/aos.js}"></script>
+	<script th:src="@{/vendor/php-email-form/validate.js}"></script>
+	
+	<!-- Template Main JS File--> 
+	<script th:src="@{/js/main.js}"></script>
+	
+	<script>
+
+	</script>
+</head>
+<th:block layout:fragment="content">
+    <div class="page-header d-flex align-items-center">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2>아씨바</h2>
+            <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-1 col-md-6 d-flex category-click" data-component="cpu">
+            <div class="service-item position-relative">
+              <h4>Cpu</h4>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-1 col-md-6 d-flex category-click" data-component="gpu">
+            <div class="service-item position-relative">
+              <h4>Gpu</h4>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-1 col-md-6 d-flex category-click" data-component="mainboard">
+            <div class="service-item position-relative">
+              <h4>MainBoard</h4>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-1 col-md-6 d-flex category-click" data-component="hdd">
+            <div class="service-item position-relative">
+              <h4>Hdd</h4>
+            </div>
+          </div><!-- End Service Item -->
+
+		<div class="col-xl-1 col-md-6 d-flex category-click" data-component="power">
+            <div class="service-item position-relative">
+              <h4>Power</h4>
+            </div>
+          </div><!-- End Service Item -->
+          
+          <div class="col-xl-1 col-md-6 d-flex category-click" data-component="ram">
+            <div class="service-item position-relative">
+              <h4>Ram</h4>
+            </div>
+          </div><!-- End Service Item -->
+           
+          <div class="col-xl-1 col-md-6 d-flex category-click" data-component="ssd">
+            <div class="service-item position-relative">
+              <h4>Ssd</h4>
+            </div>
+          </div><!-- End Service Item -->
+          
+          <div class="col-xl-1 col-md-6 d-flex category-click" data-component="pcCase">
+            <div class="service-item position-relative">
+              <h4>Case</h4>
+            </div>
+          </div><!-- End Service Item -->
+          
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    
+	<div class="container" >
+		<div class="row">
+			<div class="col-auto">
+				<input type="text" class="form-control" id="search-text">
+			</div>
+			<div class="col-auto">
+				<span class="btn btn-primary" font-color="white" id="search-button">검색</span>
+			</div>
+		</div>
+		<!-- ajax로 list데이터 들어갈 곳 -->
+		<div id="list-div">
+			
+		</div>
+		<!-- ajax로 paging 들어갈 곳-->
+		<div id="paging-div">
+			
+		</div>
+		
+	</div>
+	
+		<!-- 페이징처리 시작 -->
+	<!--<div th:if="${!paging.isEmpty()}">
+		<ul class="pagination justify-content-center">
+			<li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
+				<a class="page-link" href="javascript:void(0)" th:data-page="${paging.number-1}">
+					<span>이전</span>
+				</a>
+			</li>
+			<li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+				th:if="${page >= paging.number-5 and page <= paging.number+5}"
+				th:classappend="${page == paging.number} ? 'active'"
+				class="page-item">
+				<a th:text="${page}" class="page-link" href="javascript:void(0)" th:data-page="${page}"></a>
+			</li>
+			<li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
+				<a class="page-link" href="javascript:void(0)" th:data-page="${paging.number-1}">
+					<span>다음</span>
+				</a>
+			</li>
+		</ul>
+	</div>-->
+	<!-- 페이징처리 끝 -->
+
+</th:block>
+
+
+<script>
+// 테스트 콘솔 출력
+$.ajax({
+    type: "GET",
+    contentType: "application/json",
+    url: "/estimation/rest",
+    data: { component : "cpu",
+    		page : 0,
+    		kw : ""},
+    success: function(response) {
+        console.log(response);
+    }
+});
+/*
+$(function(){
+	
+	$.ajax({
+		url : "/estimation/rest", 
+		type : "GET", 
+		dataType : "json", 
+		data : { component : "cpu",
+    		page : 0,
+    		kw : ""},
+		success : function(paging) {
+			// list 데이터 출력
+			var listStr = '';
+			for(var content of paging.content){
+				listStr += '<div class="row">';
+				listStr += '<h4>' + content.modelName + '</h4>';
+				for(let i in content) {
+					if(!(i == 'modelName' || i == 'id')){
+						listStr += content[i] + '/';
+					}
+				}
+				listStr += '</div>';
+				
+			}
+			 th:classappend="${!paging.hasPrevious} ? 'disabled'"
+			// paging 버튼 추가
+			var pagingStr = '';
+			if(!paging.empty) {
+				pagingStr += '<ul class="pagination justify-content-center">';
+				pagingStr += '<li class="page-item '; 
+				pagingStr += paging.first? 'disabled' : '';
+				pagingStr += '">';
+				pagingStr += '<a class="page-link" href="javascript:void(0)" th:data-page="${paging.number-1}">';
+				pagingStr += '<span>이전</span>';	
+				pagingStr += '</a>';
+				pagingStr += '</li>';
+				for(let page = 0; page < paging.totalPages; page++) {
+					if (page >= paging.number - 5 && page <= paging.number + 5) {
+           				const isActive = page === paging.number;
+            			const classAttribute = isActive ? 'class="page-item active"' : 'class="page-item"';
+            			const linkText = isActive ? `<span class="page-link">${page}</span>` : `<a class="page-link" data-page="${page}">${page}</a>`;
+            
+            			pagingStr += `<li ${classAttribute}>${linkText}</li>`;
+        			}
+				}
+				pagingStr += '<li class="page-item '; 
+				pagingStr += paging.last? 'disabled' : '';
+				pagingStr += '">';
+				pagingStr += '<a class="page-link" href="javascript:void(0)" th:data-page="${paging.number-1}">';
+				pagingStr += '<span>다음</span>';	
+				pagingStr += '</a>';
+				pagingStr += '</li>';
+				pagingStr += '</ul>';
+			}
+			var test = '';
+			test += paging.first? 'disabled' : '';
+			console.log( test);
+			$('#list-div').append(listStr);
+			$('#paging-div').append(pagingStr);
+		},
+		error : function(xhr, status, error) {
+			console.log("에러");
+		}
+	});
+});
+*/
+
+let componentData = 'cpu';
+let searchText = '';
+
+// 페이징 버튼을 눌렀을 때 비동기로 데이터 로딩이 되기 위한 함수
+function loadData(pageNumber, componentData, searchText) {
+    $.ajax({
+        url: "/estimation/rest",
+        type: "GET",
+        dataType: "json",
+        data: {
+            component: componentData,
+            page: pageNumber,
+            kw: searchText
+        },
+        success: function (paging) {
+			$('#search-text').val(searchText);
+            // 페이지 데이터 출력
+            var listStr = '';
+            for (var content of paging.content) {
+                listStr += '<div class="row">';
+                listStr += '<h4>' + content.modelName + '</h4>';
+                for (let i in content) {
+                    if (!(i == 'modelName' || i == 'id')) {
+                        listStr += content[i] + '/';
+                    }
+                }
+                listStr += '<div class="col-auto">';
+				listStr += '<span class="btn btn-primary">담기</span>'
+				listStr += '</div>';
+                listStr += '</div>';
+            }
+
+            // 페이징 버튼 생성
+            var pagingStr = '';
+            if (!paging.empty) {
+                pagingStr += '<ul class="pagination justify-content-center">';
+                pagingStr += '<li class="page-item ' + (paging.first ? 'disabled' : '') + '">';
+                pagingStr += '<a class="page-link" href="javascript:void(0)" data-page="' + (paging.number - 1) + '">';
+                pagingStr += '<span>이전</span>';
+                pagingStr += '</a>';
+                pagingStr += '</li>';
+                for (let page = 0; page < paging.totalPages; page++) {
+                    if (page >= paging.number - 5 && page <= paging.number + 5) {
+                        const isActive = page === paging.number;
+                        const classAttribute = isActive ? 'class="page-item active"' : 'class="page-item"';
+                        const linkText = isActive ? `<span class="page-link">${page}</span>` : `<a class="page-link" data-page="${page}">${page}</a>`;
+
+                        pagingStr += `<li ${classAttribute}>${linkText}</li>`;
+                    }
+                }
+                pagingStr += '<li class="page-item ' + (paging.last ? 'disabled' : '') + '">';
+                pagingStr += '<a class="page-link" href="javascript:void(0)" data-page="' + (paging.number + 1) + '">';
+                pagingStr += '<span>다음</span>';
+                pagingStr += '</a>';
+                pagingStr += '</li>';
+                pagingStr += '</ul>';
+            }
+
+            // 결과를 화면에 출력
+            $('#list-div').html(listStr);
+            $('#paging-div').html(pagingStr);
+        },
+        error: function (xhr, status, error) {
+            console.log("에러");
+        }
+    });
+}
+
+// 초기 페이지 로딩
+loadData(0, "cpu");
+
+// 페이지 버튼 클릭 이벤트
+$(document).on('click', '.pagination a', function (e) {
+    e.preventDefault();
+    const pageNumber = $(this).data('page');
+    loadData(pageNumber, componentData, searchText);
+});
+
+// 카테고리 버튼 클릭 이벤트
+$(document).on('click', '.category-click', function (e) {
+    e.preventDefault();
+    $('#search-text').val('');
+    const pageNumber = $(this).data('page');
+    componentData = $(this).data('component');
+    loadData(pageNumber, componentData, searchText);
+});
+
+// 검색 버튼 클릭 이벤트
+$(document).on('click', '#search-button', function (e) {
+    e.preventDefault();
+    const pageNumber = $(this).data('page');
+    searchText = $('#search-text').val();
+    loadData(pageNumber, componentData, searchText);
+});
+
+</script>
+
+</html>

@@ -10,9 +10,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.example.scarecrow.dto.Gpu;
-import com.example.scarecrow.dto.Gpu;
-import com.example.scarecrow.repository.GpuRepository;
+import com.example.scarecrow.dto.Hdd;
+import com.example.scarecrow.repository.HddRepository;
+import com.example.scarecrow.repository.HddRepository;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -22,31 +22,31 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class GpuService {
+public class HddService{
+
+	private final HddRepository hddRepository;
 	
-	private final GpuRepository gpuRepository;
-	
-	private Specification<Gpu> search(String kw) {
-		return new Specification<Gpu>() {
+	private Specification<Hdd> search(String kw) {
+		return new Specification<Hdd>() {
 			private static final long serialVersionUID = 1L;
 			@Override
-			public Predicate toPredicate(Root<Gpu> q, CriteriaQuery<?> query, CriteriaBuilder cb) {
+			public Predicate toPredicate(Root<Hdd> q, CriteriaQuery<?> query, CriteriaBuilder cb) {
 				query.distinct(true);
 				return cb.like(q.get("modelName"), "%" + kw + "%");
 			}
 		};
 	}
 	
-	public List<Gpu> getList() {
-		return this.gpuRepository.findAll();
+	public List<Hdd> getList() {
+		return this.hddRepository.findAll();
 	}
 	
-	public Page<Gpu> getList(int page, String kw) {
+	public Page<Hdd> getList(int page, String kw) {
 		List<Sort.Order> sorts = new ArrayList<>();
 		sorts.add(Sort.Order.desc("id"));
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-		Specification<Gpu> spec = search(kw);
-		return this.gpuRepository.findAll(spec, pageable);
+		Specification<Hdd> spec = search(kw);
+		return this.hddRepository.findAll(spec, pageable);
 	}
-
+	
 }
