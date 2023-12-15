@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,13 +17,18 @@ import lombok.Setter;
 public class Board {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer id; //게시판 주식별자
 	
 	@Column(length = 200)
-    private String subject;
+    private String subject; //제목
 
     @Column(columnDefinition = "TEXT")
-    private String content;
+    private String content; //내용
 
-    private LocalDateTime createDate;
+    private LocalDateTime createDate; //작성시간
+    
+    @ManyToOne
+    private UserDto user;
+    
+    private LocalDateTime modifyDate;
 }
