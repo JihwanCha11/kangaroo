@@ -17,5 +17,6 @@ public class StoreLocation {
     private Integer id;
 
     private String storeName;
-    private Long storeCoordinate;
+    private Long storeCoordinateX;
+    private Long storeCoordinateY;
 }
