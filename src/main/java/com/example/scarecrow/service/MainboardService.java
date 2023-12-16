@@ -19,4 +19,6 @@ public class MainboardService {
 		return this.mainboardRepository.findAll();
 	}
 
+	public Mainboard getDetail(Long id) {return this.mainboardRepository.findById(id).get();}
+
 }

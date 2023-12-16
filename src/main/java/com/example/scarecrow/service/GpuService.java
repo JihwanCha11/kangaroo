@@ -19,4 +19,6 @@ public class GpuService {
 		return this.gpuRepository.findAll();
 	}
 
+	public Gpu getDetail(Long id){return this.gpuRepository.findById(id).get();}
+
 }

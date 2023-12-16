@@ -2,6 +2,7 @@ package com.example.scarecrow.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -47,5 +48,9 @@ public class CpuService{
 		Specification<Cpu> spec = search(kw);
 		return this.cpuRepository.findAll(spec, pageable);
 	}
+
+
+	//상품 하나의 정보
+	public Cpu getDetail(Long id){return this.cpuRepository.findById(id).get();}
 	
 }
